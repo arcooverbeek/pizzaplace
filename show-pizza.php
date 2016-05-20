@@ -1,6 +1,8 @@
 <?php
   require 'includes/init.php';
-  require 'pizzas.php';
+  require 'conn.php';
+  require 'pizza.php';
+
   require 'functions.php';
 ?>
 <!doctype html>
@@ -20,7 +22,10 @@
       </div>
       <?php
         if (isset($_GET['pizza_id'])) {
-          $pizza = $pizzas[$_GET['pizza_id']];
+
+          $pizza = Pizza::find($conn, $_GET['pizza_id']);
+
+
           $quantity = array_key_exists($_GET['pizza_id'], $_SESSION['cart_items']) ? $_SESSION['cart_items'][$_GET['pizza_id']]['quantity'] : 1;
 
         }
@@ -28,13 +33,13 @@
       <div class="media">
         <div class="media-left">
           <a href="#">
-            <img class="media-object" src="images/pizzas/<?php echo slug($pizza['name']); ?>.jpg" alt="...">
+            <img class="media-object" src="images/pizzas/<?php echo slug($pizza->name); ?>.jpg" alt="...">
           </a>
         </div>
         <div class="media-body">
-          <h4 class="media-heading"><?php echo $pizza['name']; ?></h4>
-          <p><?php echo $pizza['description']; ?></p>
-          <strong class="pull-right" style="font-size: 25px;">€ <?php echo $pizza['price']; ?>,-</strong>
+          <h4 class="media-heading"><?php echo $pizza->name; ?></h4>
+          <p><?php echo $pizza->description; ?></p>
+          <strong class="pull-right" style="font-size: 25px;">€ <?php echo $pizza->price; ?>,-</strong>
           <form method="POST" action="cart.php">
             <label>Aantal van deze pizza</label>
 
