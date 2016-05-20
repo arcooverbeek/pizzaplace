@@ -1,7 +1,15 @@
 <?php
   require 'includes/init.php';
-  require 'pizzas.php';
+  require 'conn.php';
+  require 'pizza.php';
+  require 'cart.php';
   require 'functions.php';
+
+  $cart = new Cart();
+  setlocale(LC_MONETARY, 'nl_NL');
+  echo  money_format('%i', $cart->subtotal($conn));
+  var_dump($cart->total_number_of_items());
+
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -20,8 +28,15 @@
       </div>
       <div class="row">
         <?php
-          if ( sizeof($_SESSION['cart_items']) == 0 ) {
+          if ( $cart->total_number_of_items == 0 ) {
 
+            ?>
+            <div class='text-center'>
+              <h3>Sukkel niks in je kar!</h3>
+              <a href="index.php" class='btn btn-primary'>Winkelen met je gertie!</a>
+            </div>
+
+            <?php
           } else {
             ?>
             <table class='table'>
@@ -35,17 +50,19 @@
               </thead>
               <tbody>
                 <?php foreach ($_SESSION['cart_items'] as $cart_item) : ?>
+                  <?php $pizza = Pizza::find($conn, $cart_item['product']); ?>
                   <tr>
-                    <td><?php echo $pizzas[$cart_item['product']]['name']; ?></td>
+                    <td><a href="show-pizza.php?pizza_id=<?php echo $pizza->id; ?>"><?php echo $pizza->name; ?></a></td>
                     <td><?php echo $cart_item['quantity']; ?></td>
-                    <td><?php echo $pizzas[$cart_item['product']]['price']; ?></td>
-                    <td><?php echo $pizzas[$cart_item['product']]['price'] * $cart_item['quantity']; ?></td>
+                    <td><?php echo $pizza->price; ?></td>
+                    <td><?php echo $pizza->price * $cart_item['quantity']; ?></td>
                   </tr>
                 <?php endforeach; ?>
               </tbody>
             </table>
         <?php
         }
+        // $cart->empty_cart();
         ?>
       </div>
     </div>
