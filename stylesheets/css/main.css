@@ -1,8 +1,18 @@
+/* line 1, ../scss/_layout.scss */
+body {
+  background: -webkit-linear-gradient(top, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+  background: linear-gradient(to bottom, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+}
+
+/* line 5, ../scss/main.scss */
 i#cart-icon {
   position: relative;
   font-size: 26px;
   margin-bottom: -10px;
+  padding-bottom: 10px;
 }
+
+/* line 11, ../scss/main.scss */
 i#cart-icon span.amount {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight: bold;
@@ -20,6 +30,10 @@ i#cart-icon span.amount {
   right: -10px;
   padding: 0px 4px;
 }
+
+/* line 28, ../scss/main.scss */
 div#pizza-description .description {
   display: none;
 }
+
+/*# sourceMappingURL=main.css.map */

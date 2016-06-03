@@ -1,0 +1,30 @@
+
+@import 'layout';
+@import 'cart';
+
+i#cart-icon {
+  position: relative;
+  font-size: 26px;
+  margin-bottom: -10px;
+  padding-bottom: 10px;
+}
+i#cart-icon span.amount {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: bold;
+  position: absolute;
+  height: 20px;
+  min-width: 20px;
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  border: 2px solid #FFF;
+  line-height: 18px;
+  text-align: center;
+  font-size: 14px;
+  top: -3px;
+  right: -10px;
+  padding: 0px 4px;
+}
+div#pizza-description .description {
+  display: none;
+}

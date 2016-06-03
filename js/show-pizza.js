@@ -19,7 +19,7 @@ $(document).ready(function() {
   $('form#add-to-cart').submit(function(e) {
     e.preventDefault();
 
-    $.post( 'add-to-cart.php', function(data) {
+    $.post( 'add-to-cart.php', $('form#add-to-cart').serialize(), function(data) {
       $('#total-number-of-items').text(data);
     });
 
