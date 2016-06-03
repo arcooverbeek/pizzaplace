@@ -6,4 +6,7 @@ function slug($z){
   return trim($z, '-');
 }
 
+function price($price) {
+  return "€ " . number_format($price, 2, ',', '.') . ',-';
+}
 ?>

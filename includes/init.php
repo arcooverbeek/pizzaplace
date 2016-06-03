@@ -3,4 +3,5 @@
  if (!isset($_SESSION['cart_items'])) {
     $_SESSION['cart_items'] = array();
  }
+ $cart = new Cart();
 ?>

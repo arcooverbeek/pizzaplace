@@ -9,7 +9,6 @@ class Cart {
     $this->cart_items = $_SESSION['cart_items'];
   }
 
-
   public function subtotal($conn) {
     if ($this->subtotal == 0){
       foreach ($this->cart_items as $cart_item) {
