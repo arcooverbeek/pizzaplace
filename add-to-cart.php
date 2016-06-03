@@ -1,6 +1,12 @@
 <?php
   session_start();
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+      /* special ajax here */
+      die('kutzooi');
+    }
+
     if (isset($_POST['product_id']) && isset($_POST['quantity'])) {
 
       $cart_item = ['product' => $_POST['product_id'], 'quantity' => $_POST['quantity']];

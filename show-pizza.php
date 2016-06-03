@@ -26,7 +26,7 @@
 
 
     <strong class="pull-right" style="font-size: 25px;">€ <?php echo $pizza->price; ?>,-</strong>
-    <form method="POST" action="add-to-cart.php">
+    <form method="POST" id='add-to-cart' action="add-to-cart.php">
       <label>Aantal van deze pizza</label>
       <input type='hidden' name='product_id' value="<?php echo $_GET['pizza_id']; ?>">
       <input type="number" name='quantity' value="<?php echo $quantity;  ?>" id="quantity-input">

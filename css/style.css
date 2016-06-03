@@ -20,4 +20,6 @@ i#cart-icon span.amount {
   right: -10px;
   padding: 0px 4px;
 }
-div#
+div#pizza-description .description {
+  display: none;
+}
